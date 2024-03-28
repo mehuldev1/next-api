@@ -8,5 +8,5 @@ export function GET(){
 export async function POST(request){
     let payload = await request.json()
     console.log(payload)
-    return NextResponse.json({result:'hello'})
+    return NextResponse.json({result:'your data added'},{status:200})
 }
