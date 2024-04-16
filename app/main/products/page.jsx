@@ -1,14 +1,12 @@
 "use client"
-
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useAction from './useAction';
-import { useRouter } from 'next/navigation'
 
 function Page() {
-  const router  = useRouter()
+  const router = useRouter();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -24,13 +22,23 @@ function Page() {
     fetchData();
   }, []);
 
-  const { handleEdit, handleDelete } = useAction();
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/api/products/${id}`);
+      // Assuming successful deletion, update the products state to reflect the changes
+      setProducts(products.filter(product => product._id !== id));
+      toast.success('Product deleted successfully');
+    } catch (error) {
+      console.error('Error deleting product:', error);
+      toast.error('Failed to delete product');
+    }
+  };
 
   return (
     <div>
       <ToastContainer />
       <h1>All Products</h1>
-      <button onClick={()=>router.push('/main/products/addproduct')}>Add Product</button>
+      <button onClick={() => router.push('/main/products/addproduct')}>Add Product</button>
       <table>
         <thead>
           <tr>
@@ -44,7 +52,7 @@ function Page() {
             <tr key={index}>
               <td>{item.name}</td>
               <td>
-                <button onClick={() => handleEdit(item._id)}>Edit</button>
+                <button onClick={() => router.push(`/main/products/editproduct/${item._id}`)}>Edit</button>
               </td>
               <td>
                 <button onClick={() => handleDelete(item._id)}>Delete</button>
