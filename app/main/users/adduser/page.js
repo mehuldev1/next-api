@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 
-function page() {
+function Page() {
     const [name,setName] = useState(null)
     const [age,setAge] = useState(null)
 
@@ -31,4 +31,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

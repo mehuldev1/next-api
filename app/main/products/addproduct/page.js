@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 
-function page() {
+function Page() {
     const [productName, setProductName] = useState('');
     const router = useRouter()
 
@@ -32,4 +32,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 
-function page({params}) {
+function Page({params}) {
     console.log(params.userId)
     const [name,setName] = useState(null)
     const [age,setAge] = useState(null)
@@ -43,4 +43,4 @@ function page({params}) {
       )
 }
 
-export default page
+export default Page

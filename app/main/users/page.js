@@ -17,7 +17,7 @@ async function deleteUser(id){
   return data
 }
 
-async function page() {
+async function Page() {
   const users= await getUsers()
 
   return (
@@ -38,4 +38,4 @@ async function page() {
   )
 }
 
-export default page
+export default Page

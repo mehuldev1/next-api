@@ -8,7 +8,7 @@ async function getUser(id){
   return data
 }
 
-async function page({params}) {
+async function Page({params}) {
   const user = await getUser(params.userId)
   return (
     <div>
@@ -24,4 +24,4 @@ async function page({params}) {
   )
 }
 
-export default page
+export default Page
